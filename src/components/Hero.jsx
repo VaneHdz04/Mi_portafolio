@@ -133,7 +133,7 @@ export const Hero = () => {
           {/* BOTÓN CON EFECTO SWEEP */}
           <div className="flex items-center gap-6">
             <a 
-              href="https://drive.google.com/uc?export=download&id=1XBsv_AX5TlFmaVWOkii3e-5PXUp7UQow" 
+              href="https://drive.google.com/uc?export=download&id=1EYQNTeTAWt4WG9YgP-Ac5bYMjPFfHPMC" 
               target="_blank" 
               rel="noopener noreferrer"
               className="btn-sweep group relative flex items-center gap-4 px-10 py-5 font-bold text-[#1f272c] bg-gradient-to-r from-[#a9b7ba] to-[#eeede8] transition-all hover:scale-105 active:scale-95 shadow-[0_15px_30px_rgba(134,163,171,0.3)] border border-[#eeede8]"
