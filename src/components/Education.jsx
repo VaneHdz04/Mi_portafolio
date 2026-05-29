@@ -24,44 +24,58 @@ export const Education = () => {
     }
   ];
 
-  // === CERTIFICACIONES Y APRENDIZAJE CONTINUO (Grid de Valor) ===
-  // Se ha eliminado 'platform' (Expedido por) y 'type' (Certificado/Especialización)
+  // === CERTIFICACIONES Y APRENDIZAJE CONTINUO (Grid de Categorías) ===
   const certifications = [
     {
       id: 1,
-      title: "Certificación en Docker y Virtualización",
-      icon: "fab fa-docker",
-      value: "Aislamiento y despliegue continuo de entornos. Optimizo el ciclo de vida del software asegurando que el código funcione idéntico en desarrollo y producción."
+      title: "Desarrollo Multiplataforma y Web",
+      icon: "fas fa-laptop-code",
+      courses: [
+        "Aplicaciones Móviles con Flutter",
+        "Fundamentos de React Native",
+        "React.js y React Avanzado",
+        "Desarrollo Web Moderno (HTML, CSS, JS, Tailwind, React)"
+      ]
     },
     {
       id: 2,
-      title: "Desarrollo Multiplataforma con Flutter",
-      icon: "fas fa-mobile-screen-button",
-      value: "Construcción de aplicaciones móviles nativas y responsivas desde una única base de código, acelerando el 'Time-to-Market' de los productos digitales."
+      title: "Ciberseguridad",
+      icon: "fas fa-shield-halved",
+      courses: [
+        "Inteligencia para la Ciberseguridad",
+        "Ciberseguridad para Desarrollo Web",
+        "Ciberseguridad y Privacidad para Empresas"
+      ]
     },
     {
       id: 3,
-      title: "Arquitectura Cloud y Alta Disponibilidad",
-      icon: "fab fa-aws",
-      value: "Capacidad para configurar, desplegar y asegurar aplicaciones en entornos de nube, garantizando la escalabilidad y disponibilidad operativa de la empresa."
+      title: "IA y Automatización",
+      icon: "fas fa-brain",
+      courses: [
+        "Pensamiento Crítico para usar Inteligencia Artificial",
+        "Automatizaciones con n8n"
+      ]
     },
     {
       id: 4,
-      title: "Ecosistemas Web Modernos (JS/React)",
-      icon: "fab fa-react",
-      value: "Implementación de interfaces interactivas, modulares y centradas en el usuario, aplicando principios de diseño que retienen y convierten clientes."
+      title: "Infraestructura Cloud y DevOps",
+      icon: "fas fa-cloud",
+      courses: [
+        "Servicios en la Nube con AWS",
+        "Virtualización y Contenedores con Docker y Proxmox",
+        "Git y GitHub"
+      ]
     },
     {
       id: 5,
-      title: "Integración de IA en Software",
-      icon: "fas fa-brain",
-      value: "Orquestación de LLMs (Gemini, Phi-3) y flujos automatizados para transformar tareas operativas en soluciones autónomas de alto impacto."
-    },
-    {
-      id: 6,
-      title: "Certificación Oficial Microsoft Office",
-      icon: "fas fa-file-signature",
-      value: "Manejo avanzado validado para la gestión documental rigurosa, análisis de métricas complejas en Excel y presentación ejecutiva de resultados."
+      title: "Diseño, Datos y Gestión",
+      icon: "fas fa-chart-line",
+      courses: [
+        "Diseño y Prototipado en Figma",
+        "Power BI",
+        "Certificación oficial en Microsoft Office (Word, Excel, PowerPoint)",
+        "Mindset para Ventas"
+      ]
     }
   ];
 
@@ -127,7 +141,6 @@ export const Education = () => {
               >
                 
                 {/* Cabecera: Icono */}
-                {/* Se ha eliminado el badge de tipo de certificado */}
                 <div className="flex justify-start items-center mb-5">
                   <div className="w-12 h-12 rounded-xl bg-[#121619] border border-[#a9b7ba]/30 flex items-center justify-center group-hover:border-[#efe5dc]/50 transition-colors shadow-inner">
                     <i className={`${cert.icon} text-xl text-[#86a3ab] group-hover:text-[#efe5dc] transition-colors`}></i>
@@ -136,15 +149,15 @@ export const Education = () => {
 
                 {/* Título */}
                 <h4 className="text-[#eeede8] font-bold text-base leading-tight mb-1">{cert.title}</h4>
-                {/* Se ha eliminado la plataforma (Expedido por) */}
 
-                {/* Descripción desplegable al hacer hover (Smooth Accordion) */}
+                {/* Lista desplegable al hacer hover (Smooth Accordion modificado para listas) */}
                 <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-all duration-500 ease-in-out relative z-10">
                   <div className="overflow-hidden">
-                    {/* La transparencia y el degradado aseguran legibilidad sobre el título */}
-                    <p className="text-[#cbcac8] text-sm font-light leading-relaxed pt-4 mt-4 border-t border-[#86a3ab]/20 bg-gradient-to-b from-[#1f272c]/90 via-[#1f272c] to-[#1f272c] relative">
-                      {cert.value}
-                    </p>
+                    <ul className="text-[#cbcac8] text-[13px] font-light leading-relaxed pt-4 mt-4 border-t border-[#86a3ab]/20 bg-gradient-to-b from-[#1f272c]/90 via-[#1f272c] to-[#1f272c] relative list-disc pl-5 space-y-1 marker:text-[#86a3ab]">
+                      {cert.courses.map((course, i) => (
+                        <li key={i}>{course}</li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
                 

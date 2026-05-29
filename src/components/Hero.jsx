@@ -1,6 +1,8 @@
 import { useEffect, useRef } from 'react';
 import { useTypewriter } from '../hooks/useTypewriter';
 import HeroImage from '../assets/vanesa.png';
+import Proyecto1Img from '../assets/1.jpg'; 
+import Proyecto2Img from '../assets/2.jpg';
 
 // === COMPONENTE DE PARTÍCULAS (RED DE CONSTELACIÓN) ===
 const ParticlesNetwork = () => {
@@ -120,11 +122,16 @@ export const Hero = () => {
             Para mí, el desarrollo es el arte de tomar el caos del mundo real y convertirlo en <span className="text-[#eeede8]">sistemas lógicos e intuitivos.</span>
           </h2>
 
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight text-[#eeede8] mb-6 min-h-[120px] sm:min-h-0">
-            Hola, soy <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#86a3ab] to-[#efe5dc]">{typewrittenText}</span>
-            <span className="text-[#86a3ab] animate-pulse">|</span>
-          </h1>
+          {/* SOLUCIÓN: Cambiamos a 'min-h' y aumentamos los valores para que el texto grande quepa perfectamente sin desbordarse ni mover la pantalla */}
+          <div className="min-h-[180px] sm:min-h-[220px] md:min-h-[260px] lg:min-h-[300px] mb-2 flex flex-col justify-center">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight text-[#eeede8]">
+              Hola, soy <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#86a3ab] to-[#efe5dc]">
+                {typewrittenText}
+              </span>
+              <span className="text-[#86a3ab] animate-pulse">|</span>
+            </h1>
+          </div>
 
           <p className="text-[#cbcac8] leading-relaxed max-w-lg text-lg mb-10 font-medium border-l-4 border-[#86a3ab] pl-5">
             Desarrolladora Full-Stack enfocada en la automatización de procesos y arquitecturas modernas. Combino Inteligencia Artificial, pensamiento analítico y desarrollo multiplataforma para crear soluciones que redefinen la eficiencia.
@@ -133,7 +140,7 @@ export const Hero = () => {
           {/* BOTÓN CON EFECTO SWEEP */}
           <div className="flex items-center gap-6">
             <a 
-              href="https://drive.google.com/uc?export=download&id=1XBsv_AX5TlFmaVWOkii3e-5PXUp7UQow" 
+              href="https://drive.google.com/uc?export=download&id=1AvGjYTSCQJLhDqTFqpjksu_MpsME5PgS" 
               target="_blank" 
               rel="noopener noreferrer"
               className="btn-sweep group relative flex items-center gap-4 px-10 py-5 font-bold text-[#1f272c] bg-gradient-to-r from-[#a9b7ba] to-[#eeede8] transition-all hover:scale-105 active:scale-95 shadow-[0_15px_30px_rgba(134,163,171,0.3)] border border-[#eeede8]"
@@ -167,7 +174,7 @@ export const Hero = () => {
             {/* TARJETA TRASERA 2 (Ajustada para Imagen) */}
             <div className="absolute w-72 h-[400px] bg-[#75868d] rounded-2xl border border-[#a9b7ba]/40 shadow-[0_20px_50px_rgba(0,0,0,0.3)] transition-all duration-700 ease-out transform rotate-[-4deg] translate-x-0 group-hover:rotate-[-25deg] group-hover:-translate-x-28 group-hover:translate-y-6 z-0 overflow-hidden">
               <img 
-                src="../../src/assets/1.jpg" 
+                src={Proyecto1Img} // <-- CAMBIA ESTO AQUÍ
                 alt="Proyecto 1" 
                 className="w-full h-full object-cover opacity-60 mix-blend-luminosity group-hover:mix-blend-normal group-hover:opacity-100 transition-all duration-500"
               />
@@ -176,7 +183,7 @@ export const Hero = () => {
             {/* TARJETA TRASERA 1 (Ajustada para Imagen) */}
             <div className="absolute w-72 h-[400px] bg-[#86a3ab] rounded-2xl border border-[#efe5dc]/50 shadow-[0_20px_50px_rgba(0,0,0,0.3)] transition-all duration-700 ease-out transform rotate-[4deg] translate-x-0 group-hover:rotate-[22deg] group-hover:translate-x-28 group-hover:translate-y-4 z-0 overflow-hidden">
               <img 
-                src="../../src/assets/2.jpg" 
+                src={Proyecto2Img} // <-- Y CAMBIA ESTO AQUÍ
                 alt="Proyecto 2" 
                 className="w-full h-full object-cover opacity-60 mix-blend-luminosity group-hover:mix-blend-normal group-hover:opacity-100 transition-all duration-500"
               />
