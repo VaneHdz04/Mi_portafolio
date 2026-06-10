@@ -140,7 +140,7 @@ export const Hero = () => {
           {/* BOTÓN CON EFECTO SWEEP */}
           <div className="flex items-center gap-6">
             <a 
-              href="https://drive.google.com/uc?export=download&id=1AvGjYTSCQJLhDqTFqpjksu_MpsME5PgS"  
+              href="https://drive.google.com/uc?export=download&id=11GnGdTG7yJkL05W-xVSVa68EDY12vmR9"  
 
               target="_blank" 
               rel="noopener noreferrer"
