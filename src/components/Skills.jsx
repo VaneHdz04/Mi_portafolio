@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
+import AdobeLogo from '../assets/adobe.svg';
+import ExpressLogo from '../assets/express.svg';
 
 // === COMPONENTE INTERNO: TARJETA DE HABILIDAD (DASHBOARD STYLE) ===
-const SkillCard = ({ name, icon, imgUrl, percentage }) => {
+const SkillCard = ({ name, icon, imgUrl, percentage, badge, highlight }) => {
   const [width, setWidth] = useState(0);
 
   useEffect(() => {
@@ -13,19 +15,30 @@ const SkillCard = ({ name, icon, imgUrl, percentage }) => {
   }, [percentage]);
 
   return (
-    <div className="group relative bg-[#1f272c]/40 backdrop-blur-md border border-[#86a3ab]/20 p-6 rounded-2xl shadow-lg hover:-translate-y-1 hover:border-[#a9b7ba]/50 transition-all duration-300">
+    <div className={`group relative backdrop-blur-md p-6 rounded-2xl shadow-lg hover:-translate-y-1 transition-all duration-300
+      ${highlight 
+        ? 'bg-[#1f272c]/70 border border-[#86a3ab]/50 shadow-[0_0_20px_rgba(134,163,171,0.2)] hover:border-[#efe5dc]/60 hover:shadow-[0_0_25px_rgba(134,163,171,0.35)]' 
+        : 'bg-[#1f272c]/40 border border-[#86a3ab]/20 hover:border-[#a9b7ba]/50 hover:bg-[#1f272c]/60'
+      }
+    `}>
+      {badge && (
+        <span className="absolute top-3 right-4 px-2 py-0.5 text-[9px] font-extrabold uppercase tracking-wider rounded-full bg-gradient-to-r from-[#86a3ab]/25 to-[#efe5dc]/20 text-[#efe5dc] border border-[#86a3ab]/40">
+          {badge}
+        </span>
+      )}
       
       {/* Icono / Logo y Nombre */}
       <div className="flex items-center gap-4 mb-6">
-        <div className="w-12 h-12 rounded-xl bg-[#121619] border border-[#a9b7ba]/20 flex items-center justify-center group-hover:border-[#efe5dc]/50 transition-colors shadow-inner overflow-hidden">
-          {/* Lógica: Si hay una URL de imagen, mostramos la imagen. Si no, mostramos el Icono */}
+        <div className={`w-12 h-12 rounded-xl bg-[#121619] border flex items-center justify-center transition-colors shadow-inner overflow-hidden flex-shrink-0
+          ${highlight ? 'border-[#86a3ab]/50 group-hover:border-[#efe5dc]/70' : 'border-[#a9b7ba]/20 group-hover:border-[#efe5dc]/50'}
+        `}>
           {imgUrl ? (
             <img src={imgUrl} alt={name} className="w-7 h-7 object-contain drop-shadow-[0_0_8px_rgba(255,255,255,0.2)] group-hover:scale-110 transition-transform duration-300" />
           ) : (
-            <i className={`${icon} text-2xl text-[#86a3ab] group-hover:text-[#efe5dc] transition-colors`}></i>
+            <i className={`${icon} text-2xl transition-colors ${highlight ? 'text-[#efe5dc]' : 'text-[#86a3ab] group-hover:text-[#efe5dc]'}`}></i>
           )}
         </div>
-        <h4 className="text-[#eeede8] font-bold text-base leading-tight">{name}</h4>
+        <h4 className="text-[#eeede8] font-bold text-base leading-tight min-w-0 flex-1">{name}</h4>
       </div>
       
       {/* Textos de la barra */}
@@ -37,7 +50,7 @@ const SkillCard = ({ name, icon, imgUrl, percentage }) => {
       {/* Barra de Progreso Animada */}
       <div className="w-full h-1.5 bg-white/5 rounded-full overflow-hidden">
         <div 
-          className="h-full bg-gradient-to-r from-[#86a3ab] to-[#efe5dc] rounded-full transition-all duration-1000 ease-out"
+          className={`h-full rounded-full transition-all duration-1000 ease-out ${highlight ? 'bg-gradient-to-r from-[#86a3ab] via-[#a9b7ba] to-[#efe5dc]' : 'bg-gradient-to-r from-[#86a3ab] to-[#efe5dc]'}`}
           style={{ width: `${width}%` }}
         ></div>
       </div>
@@ -49,63 +62,77 @@ const SkillCard = ({ name, icon, imgUrl, percentage }) => {
 // === COMPONENTE PRINCIPAL ===
 export const Skills = () => {
 
-  // Habilidades con enlaces (imgUrl) a SVGs originales de repositorios oficiales (Devicon)
   const skillCategories = [
     {
-      title: "Lenguajes de Programación",
+      title: "Ecosistema AEM / CMS",
+      subtitle: "Especialidad en gestión de contenidos digitales",
       skills: [
-        { name: "Python", percentage: 95, imgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" },
-        { name: "JavaScript", percentage: 90, imgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" },
-        { name: "SQL", percentage: 90, icon: "fas fa-database" }, // Concepto abstracto, se queda en icono
-        { name: "PHP", percentage: 85, imgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg" },
-        { name: "Dart", percentage: 85, imgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dart/dart-original.svg" },
-        { name: "C", percentage: 75, imgUrl: "https://upload.wikimedia.org/wikipedia/commons/1/19/C_Logo.png" },
+        { name: "Adobe Experience Manager (AEM)", percentage: 95, imgUrl: AdobeLogo, badge: "Core CMS", highlight: true },
+        { name: "AEM Sites & Templates", percentage: 90, icon: "fas fa-sitemap", badge: "Sites", highlight: true },
+        { name: "AEM Assets (DAM)", percentage: 90, icon: "fas fa-photo-film", badge: "Assets", highlight: true },
+        { name: "Apache Sling & Models", percentage: 90, imgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/apache/apache-original.svg", highlight: true },
+        { name: "HTL / Sightly", percentage: 90, icon: "fas fa-code", highlight: true },
+        { name: "Arquitectura OSGi", percentage: 85, icon: "fas fa-cubes", highlight: true },
+        { name: "JCR & CRXDE", percentage: 85, icon: "fas fa-folder-tree", highlight: true },
+        { name: "Configuration Browser", percentage: 85, icon: "fas fa-sliders", highlight: true },
+      ]
+    },
+    {
+      title: "Backend Java & Spring Boot",
+      subtitle: "Desarrollo empresarial, microservicios y APIs",
+      skills: [
+        { name: "Java 17 & POO", percentage: 95, imgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg", highlight: true },
+        { name: "Spring Boot 3", percentage: 95, imgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg", highlight: true },
+        { name: "Microservicios", percentage: 90, icon: "fas fa-project-diagram", highlight: true },
+        { name: "APIs RESTful", percentage: 95, icon: "fas fa-network-wired" },
+        { name: "Spring Data JPA & Hibernate", percentage: 90, imgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/hibernate/hibernate-original.svg" },
+        { name: "Spring MVC / Web", percentage: 90, icon: "fas fa-layer-group" },
+        { name: "JUnit (Testing)", percentage: 85, imgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/junit/junit-original.svg" },
+        { name: "Spring Security", percentage: 85, icon: "fas fa-lock" },
+      ]
+    },
+    {
+      title: "Backend JavaScript",
+      subtitle: "Servicios web y autenticación",
+      skills: [
+        { name: "Node.js", percentage: 90, imgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" },
+        { name: "Express.js", percentage: 85, imgUrl: ExpressLogo },
+        { name: "JWT & Middlewares", percentage: 90, icon: "fas fa-key" },
       ]
     },
     {
       title: "Frontend",
+      subtitle: "Interfaces dinámicas y estilos",
       skills: [
         { name: "React", percentage: 90, imgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" },
+        { name: "JavaScript (ES6+)", percentage: 90, imgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" },
         { name: "Tailwind CSS", percentage: 95, imgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" },
         { name: "HTML5 / CSS3", percentage: 95, imgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" },
         { name: "Figma (UI/UX)", percentage: 85, imgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg" },
       ]
     },
     {
-      title: "Backend",
+      title: "Bases de Datos & Persistencia",
+      subtitle: "Relacionales y NoSQL",
       skills: [
-        { name: "Flask (Python)", percentage: 95, imgUrl: "https://www.manualweb.net/img/logos/flask.png" }, // Flask se ve mejor como icono blanco/gris en fondos oscuros
-        { name: "APIs RESTful", percentage: 95, icon: "fas fa-network-wired" },
-        { name: "Microservicios", percentage: 85, icon: "fas fa-project-diagram" },
-        { name: "Spring Boot", percentage: 80, imgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg" },
-      ]
-    },
-    {
-      title: "Bases de Datos",
-      skills: [
+        { name: "PostgreSQL", percentage: 90, imgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" },
         { name: "MySQL", percentage: 90, imgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" },
-        { name: "Firebase", percentage: 90, imgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-plain.svg" },
+        { name: "SQL Server", percentage: 85, imgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/microsoftsqlserver/microsoftsqlserver-original.svg" },
         { name: "MongoDB", percentage: 85, imgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg" },
       ]
     },
     {
-      title: "DevOps & Cloud",
+      title: "DevOps & Herramientas",
+      subtitle: "Contenedores, versionado, pruebas y documentación",
       skills: [
         { name: "Docker", percentage: 90, imgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" },
-        { name: "Nginx", percentage: 85, imgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nginx/nginx-original.svg" },
-        { name: "AWS Cloud", percentage: 80, icon: "fab fa-aws" }, // AWS se ve increíble como icono monocromo
-        { name: "Proxmox", percentage: 80, imgUrl: "https://camo.githubusercontent.com/deb848279f14aca7545274d26d2c8b785fd6232d6864243f630457c7f43103f9/68747470733a2f2f7777772e70726f786d6f782e636f6d2f696d616765732f70726f786d6f782f50726f786d6f785f73796d626f6c5f7374616e646172645f6865782e706e67" },
-        { name: "Git / GitHub", percentage: 85, icon: "fab fa-github" },
-      ]
-    },
-    {
-      title: "IA & Mobile",
-      skills: [
-        { name: "Flutter", percentage: 90, imgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flutter/flutter-original.svg" },
-        { name: "Gemini API", percentage: 95, imgUrl: "https://upload.wikimedia.org/wikipedia/commons/8/8a/Google_Gemini_logo.svg" }, // Logo original de Gemini
-        { name: "Ollama (LLMs Locales)", percentage: 90, imgUrl: "https://raw.githubusercontent.com/lobehub/lobe-icons/refs/heads/master/packages/static-png/dark/ollama.png" },
-        { name: "N8N Automatización", percentage: 85, imgUrl: "https://raw.githubusercontent.com/lobehub/lobe-icons/refs/heads/master/packages/static-png/dark/n8n-color.png" },
-        { name: "Ciberseguridad", percentage: 80, icon: "fas fa-shield-halved" },
+        { name: "Git", percentage: 90, imgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" },
+        { name: "GitHub", percentage: 90, icon: "fab fa-github" },
+        { name: "Insomnia", percentage: 90, imgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/insomnia/insomnia-original.svg" },
+        { name: "Postman", percentage: 90, imgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg" },
+        { name: "Swagger / OpenAPI", percentage: 90, imgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/swagger/swagger-original.svg" },
+        { name: "Apache Maven", percentage: 90, imgUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/maven/maven-original.svg" },
+        { name: "AWS Cloud", percentage: 80, icon: "fab fa-aws" },
       ]
     }
   ];
@@ -116,7 +143,7 @@ export const Skills = () => {
       {/* === ENCABEZADO === */}
       <div className="text-center mb-20 anim-up">
         <h2 className="text-[#86a3ab] text-sm font-bold tracking-widest uppercase mb-3">Stack Tecnológico</h2>
-        <h3 className="text-4xl md:text-5xl font-extrabold text-[#eeede8] tracking-tight">Mis Habilidades</h3>
+        <h3 className="text-4xl md:text-5xl font-extrabold text-[#eeede8] tracking-tight">Habilidades Técnicas</h3>
         <div className="w-12 h-1 bg-gradient-to-r from-[#86a3ab] to-[#efe5dc] mx-auto mt-6 rounded-full shadow-[0_0_15px_rgba(169,183,186,0.6)]"></div>
       </div>
 
@@ -125,12 +152,19 @@ export const Skills = () => {
         {skillCategories.map((category, idx) => (
           <div key={idx} className="anim-up" style={{ animationDelay: `${idx * 0.1}s` }}>
             
-            {/* Título de la Categoría con línea divisoria */}
-            <div className="flex items-center gap-4 mb-8">
-              <h3 className="text-xl md:text-2xl font-bold text-[#eeede8] whitespace-nowrap">
-                {category.title}
-              </h3>
-              <div className="h-[1px] flex-grow bg-gradient-to-r from-[#86a3ab]/40 to-transparent"></div>
+            {/* Título de la Categoría con línea divisoria y subtítulo */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-8">
+              <div className="flex items-center gap-3">
+                <h3 className="text-xl md:text-2xl font-bold text-[#eeede8] whitespace-nowrap">
+                  {category.title}
+                </h3>
+                {category.subtitle && (
+                  <span className="hidden sm:inline-block text-xs font-mono text-[#a9b7ba]/70 border-l border-[#86a3ab]/30 pl-3">
+                    {category.subtitle}
+                  </span>
+                )}
+              </div>
+              <div className="h-[1px] flex-grow bg-gradient-to-r from-[#86a3ab]/40 to-transparent ml-4 hidden md:block"></div>
             </div>
 
             {/* Cuadrícula de Tarjetas (4 columnas en escritorio) */}
@@ -141,7 +175,9 @@ export const Skills = () => {
                   name={skill.name} 
                   percentage={skill.percentage} 
                   icon={skill.icon} 
-                  imgUrl={skill.imgUrl} // Pasamos el imgUrl a la tarjeta
+                  imgUrl={skill.imgUrl}
+                  badge={skill.badge}
+                  highlight={skill.highlight}
                 />
               ))}
             </div>

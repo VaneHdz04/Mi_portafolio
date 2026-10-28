@@ -7,66 +7,66 @@ export const About = () => {
   const toggleHard = (name) => setExpandedHard(expandedHard === name ? null : name);
   const toggleSoft = (name) => setExpandedSoft(expandedSoft === name ? null : name);
 
-  // === DATOS DEL CV CON REDACCIÓN CLARA Y ENFOCADA EN VALOR ===
+  // === DATOS TÉCNICOS ALINEADOS A JAVA, SPRING BOOT Y AEM ===
   const hardSkills = [
     { 
-      name: "Desarrollo Full-Stack", 
+      name: "Java & Spring Boot", 
+      icon: "fab fa-java", 
+      desc: "Java 17, Spring Boot 3, Spring Data JPA, Hibernate, Maven, JUnit",
+      details: "Desarrollo de aplicaciones empresariales y servicios backend utilizando Java y Spring Boot. Implementación de APIs REST, lógica de negocio, persistencia de datos y arquitecturas organizadas por capas, aplicando programación orientada a objetos, principios SOLID y buenas prácticas de desarrollo."
+    },
+    { 
+      name: "Adobe Experience Manager (AEM)", 
+      icon: "fas fa-cubes", 
+      desc: "AEM Sites, AEM Assets, Apache Sling, Sling Models, HTL, JCR, OSGi",
+      details: "Desarrollo y personalización de soluciones de gestión de contenido digital mediante Adobe Experience Manager. Creación de componentes reutilizables utilizando Sling Models y HTL, configuración de plantillas, organización de contenido en repositorios JCR y administración de configuraciones modulares mediante OSGi."
+    },
+    { 
+      name: "Arquitectura Backend & APIs", 
+      icon: "fas fa-network-wired", 
+      desc: "APIs REST, Microservicios, MVC, JWT, Spring Security, SOLID",
+      details: "Diseño e implementación de servicios backend orientados a aplicaciones empresariales. Organización de sistemas mediante arquitecturas modulares, integración de servicios REST, mecanismos de autenticación y autorización, separación de responsabilidades y patrones que favorecen la mantenibilidad y escalabilidad del software."
+    },
+    { 
+      name: "Desarrollo Full Stack", 
       icon: "fas fa-code", 
-      desc: "React, Flutter, Python, PHP",
-      details: "Enfocada en la creación de ecosistemas digitales completos y eficientes. Especializada en la construcción de interfaces dinámicas con React y Flutter, integradas con backends robustos en Python y PHP. Comprometida con la implementación de APIs RESTful escalables que garantizan un rendimiento óptimo y una experiencia de usuario fluida."
+      desc: "React, JavaScript, HTML5, CSS3, Tailwind CSS, Node.js, Express.js",
+      details: "Desarrollo e integración de interfaces web con servicios backend, utilizando React y tecnologías modernas de frontend. Construcción de componentes reutilizables, consumo de APIs REST y desarrollo de funcionalidades con Node.js y Express.js para soluciones web completas."
     },
     { 
-      name: "Inteligencia Artificial", 
-      icon: "fas fa-brain", 
-      desc: "LLMs, Ollama, n8n, Gemini",
-      details: "Especializada en la integración estratégica de Inteligencia Artificial para la optimización de flujos de trabajo. Capacitada para desplegar modelos predictivos y generativos (como Phi-3 y Gemini) en clústeres locales, utilizando herramientas como Ollama y n8n para transformar procesos manuales en soluciones automatizadas e inteligentes."
-    },
-    { 
-      name: "DevOps e Infraestructura", 
-      icon: "fas fa-server", 
-      desc: "Docker, AWS, Proxmox, Redis",
-      details: "Motivada por garantizar la alta disponibilidad y la continuidad operativa de los sistemas. Sólida experiencia en la virtualización y contenedorización mediante Docker y Proxmox, y en el despliegue de infraestructuras distribuidas utilizando Celery, Redis y AWS para gestionar recursos de manera eficiente y escalable."
-    },
-    { 
-      name: "Bases de Datos y APIs", 
+      name: "Bases de Datos & Persistencia", 
       icon: "fas fa-database", 
-      desc: "SQL, NoSQL, REST, Firebase",
-      details: "Enfocada en el diseño y administración de arquitecturas de datos seguras e íntegras. Con experiencia en la optimización de bases relacionales (MySQL) y no relacionales (Firebase), facilitando la sincronización en tiempo real y el consumo eficiente de servicios para mantener la coherencia de la información en todo momento."
+      desc: "PostgreSQL, SQL Server, MySQL, MongoDB, JPA, Hibernate",
+      details: "Integración y administración de bases de datos relacionales y NoSQL en aplicaciones empresariales. Implementación de modelos de datos, consultas, operaciones CRUD y mecanismos de persistencia mediante JPA e Hibernate, priorizando la integridad y organización de la información."
     },
     { 
-      name: "Ciberseguridad", 
-      icon: "fas fa-shield-halved", 
-      desc: "Hacking Ético, Redes, Scapy",
-      details: "Comprometida con la protección proactiva de sistemas e infraestructuras. Capacitada en el análisis de tráfico de red y la aplicación de principios de hacking ético para identificar vulnerabilidades. Orientada a la creación de entornos seguros mediante la implementación de protocolos estrictos de control de acceso y monitoreo."
-    },
-    { 
-      name: "Hardware e IoT", 
-      icon: "fas fa-microchip", 
-      desc: "Arduino, Raspberry Pi, Sensores",
-      details: "Motivada por la convergencia entre el software y el mundo físico. Experiencia en el desarrollo de soluciones de domótica y biometría mediante la integración de microcontroladores como Arduino y Raspberry Pi, creando sistemas inteligentes que automatizan el entorno y mejoran la interacción del usuario."
+      name: "DevOps & Herramientas", 
+      icon: "fas fa-terminal", 
+      desc: "Docker, Git, GitHub, Maven, Swagger/OpenAPI, Postman, AWS",
+      details: "Configuración de entornos de desarrollo, contenerización de aplicaciones con Docker, gestión de dependencias con Maven y control de versiones mediante Git. Documentación y validación de APIs con Swagger y Postman, además de conocimientos en servicios de infraestructura y procesos de despliegue."
     }
   ];
 
   const softSkills = [
     { 
-      name: "Resolución Lógica", 
+      name: "Buenas prácticas y calidad de código", 
+      icon: "fas fa-check-double",
+      details: "Programación orientada a objetos (POO), principios SOLID, modularidad, reutilización, legibilidad y diseño estructurado para garantizar la mantenibilidad y robustez del software empresarial."
+    },
+    { 
+      name: "Resolución de problemas", 
       icon: "fas fa-puzzle-piece",
-      details: "De pensamiento analítico y estructurado, capaz de descomponer retos técnicos complejos en soluciones viables y eficientes. Enfocada siempre en la optimización de recursos y la reducción sistemática de errores humanos."
+      details: "Análisis estructurado de requerimientos, depuración técnica eficiente, diagnóstico oportuno de errores y planteamiento de soluciones orientadas a la optimización operativa."
     },
     { 
-      name: "Metodologías Ágiles", 
+      name: "Arquitectura y diseño de software", 
+      icon: "fas fa-sitemap",
+      details: "Separación clara de responsabilidades, adopción de patrones de diseño empresariales, construcción de componentes desacoplados y sistemas escalables."
+    },
+    { 
+      name: "Metodologías y colaboración", 
       icon: "fas fa-tasks",
-      details: "Acostumbrada a colaborar y liderar bajo marcos de trabajo ágiles como Scrum y Kanban. Comprometida con la entrega continua de valor, la documentación técnica clara y el control de versiones organizado."
-    },
-    { 
-      name: "Liderazgo Estratégico", 
-      icon: "fas fa-chess-knight",
-      details: "Con capacidad para asumir la iniciativa técnica y coordinar equipos multidisciplinarios. Orientada a traducir las necesidades operativas del negocio en arquitecturas tecnológicas funcionales que aportan un valor transformador."
-    },
-    { 
-      name: "Disciplina y Lealtad", 
-      icon: "fas fa-handshake",
-      details: "Profesional disciplinada y altamente adaptable, con una filosofía de aprendizaje continuo. Comprometida con los objetivos del equipo y con la entrega de proyectos de alta calidad que exceden las expectativas institucionales."
+      details: "Control de versiones ordenado con Git, flujos de trabajo colaborativos, participación en revisiones de código y coordinación bajo marcos de desarrollo ágil."
     }
   ];
 
@@ -79,13 +79,27 @@ export const About = () => {
           Sobre Mí
         </h2>
         
-        <h3 className="text-lg md:text-xl text-[#a9b7ba] font-medium mb-8">
-          Soy <span className="text-[#efe5dc] font-bold">Vanesa Hernández</span>, Arquitecta de Software e Ingeniera en Sistemas
+        <h3 className="text-base md:text-lg text-[#a9b7ba] font-medium mb-8">
+          Soy <span className="text-[#efe5dc] font-bold">Vanesa Hernández</span>, Desarrolladora Backend Java / Full Stack
         </h3>
         
-        <p className="text-[#cbcac8] leading-relaxed text-base md:text-lg max-w-4xl mx-auto font-light">
-          Estudiante de Ingeniería en Sistemas Computacionales motivada por la automatización de procesos y la creación de soluciones tecnológicas que optimizan la eficiencia empresarial. Especializada en orquestar arquitecturas modernas y modelos de Inteligencia Artificial, con sólida experiencia en el despliegue de infraestructuras escalables. De pensamiento lógico, analítico y estratégico, estoy comprometida con entregar proyectos de alta calidad que reducen errores humanos y aportan un valor transformador.
-        </p>
+        <div className="space-y-3.5 text-[#cbcac8] leading-relaxed text-sm md:text-[15px] max-w-3xl mx-auto font-light text-center md:text-left">
+          <p>
+            Ingeniera en Sistemas Computacionales con experiencia en el desarrollo de aplicaciones empresariales y soluciones tecnológicas.
+          </p>
+          <p>
+            Mi especialización se centra en el ecosistema <strong className="text-[#eeede8] font-semibold">Java</strong>, utilizando <strong className="text-[#efe5dc] font-semibold">Spring Boot, Spring MVC, JPA e Hibernate</strong> para construir APIs REST, microservicios y sistemas backend estructurados bajo buenas prácticas de programación.
+          </p>
+          <p>
+            También cuento con conocimientos aplicados en <strong className="text-[#efe5dc] font-semibold">Adobe Experience Manager (AEM)</strong>, trabajando con AEM Sites, AEM Assets, Apache Sling, Sling Models, HTL, repositorios JCR y componentes OSGi para desarrollar soluciones de gestión de contenido digital.
+          </p>
+          <p>
+            Complemento mi experiencia backend con tecnologías frontend como <strong className="text-[#eeede8] font-semibold">React, JavaScript, HTML5 y CSS3</strong>, así como herramientas de desarrollo y despliegue como Docker, Maven, Git y Swagger.
+          </p>
+          <p>
+            Me interesa desarrollar soluciones empresariales mantenibles, seguras y escalables, priorizando la calidad del código, la organización de la arquitectura y la resolución de problemas.
+          </p>
+        </div>
       </div>
 
       {/* === 2. SECCIÓN DE HABILIDADES === */}
@@ -117,20 +131,20 @@ export const About = () => {
                     }
                   `}
                 >
-                  <div className="flex items-start justify-between w-full z-10">
-                    <div className="flex items-center gap-4">
-                      <div className={`w-12 h-12 flex items-center justify-center rounded-full border transition-all duration-300
+                  <div className="flex items-start justify-between w-full z-10 gap-3">
+                    <div className="flex items-start gap-4 flex-1 min-w-0">
+                      <div className={`w-12 h-12 flex-shrink-0 flex items-center justify-center rounded-full border transition-all duration-300
                         ${isExpanded ? 'bg-gradient-to-tr from-[#86a3ab] to-[#efe5dc] border-transparent text-[#121619] shadow-[0_0_15px_rgba(134,163,171,0.5)]' : 'bg-[#121619] border-[#a9b7ba]/30 group-hover:border-[#efe5dc]/50 text-[#86a3ab] group-hover:text-[#efe5dc]'}
                       `}>
                         <i className={`${skill.icon} text-xl`}></i>
                       </div>
-                      <div>
+                      <div className="flex-1 min-w-0">
                         <h5 className="text-[#eeede8] font-bold text-base leading-tight mb-1">{skill.name}</h5>
                         <p className={`text-[11px] font-mono transition-colors ${isExpanded ? 'text-[#a9b7ba]' : 'text-[#cbcac8]/70'}`}>{skill.desc}</p>
                       </div>
                     </div>
 
-                    <div className="flex flex-col items-center justify-center mt-1">
+                    <div className="flex flex-col items-center justify-center mt-1 flex-shrink-0">
                       <div className={`w-8 h-8 rounded-full flex items-center justify-center bg-white/5 border border-white/10 transition-transform duration-500 ${isExpanded ? 'rotate-180 bg-[#86a3ab]/20 border-[#86a3ab]/50' : 'group-hover:bg-white/10'}`}>
                         <i className={`fas fa-chevron-down text-sm ${isExpanded ? 'text-[#efe5dc]' : 'text-[#a9b7ba]'}`}></i>
                       </div>
@@ -169,14 +183,14 @@ export const About = () => {
                     }
                   `}
                 >
-                  <div className="flex items-center justify-between w-full">
-                    <div className="flex items-center gap-4">
-                      <i className={`${skill.icon} text-2xl transition-colors duration-300 ${isExpanded ? 'text-[#efe5dc]' : 'text-[#a9b7ba] group-hover:text-[#eeede8]'}`}></i>
-                      <span className={`font-semibold transition-colors duration-300 ${isExpanded ? 'text-[#eeede8]' : 'text-[#cbcac8] group-hover:text-[#eeede8]'}`}>
+                  <div className="flex items-center justify-between w-full gap-3">
+                    <div className="flex items-center gap-4 min-w-0 flex-1">
+                      <i className={`${skill.icon} text-2xl flex-shrink-0 transition-colors duration-300 ${isExpanded ? 'text-[#efe5dc]' : 'text-[#86a3ab] group-hover:text-[#eeede8]'}`}></i>
+                      <span className={`font-semibold text-sm sm:text-base leading-snug transition-colors duration-300 ${isExpanded ? 'text-[#eeede8]' : 'text-[#cbcac8] group-hover:text-[#eeede8]'}`}>
                         {skill.name}
                       </span>
                     </div>
-                    <i className={`fas fa-chevron-down text-sm transition-transform duration-500 ${isExpanded ? 'rotate-180 text-[#efe5dc]' : 'text-[#86a3ab] group-hover:text-[#a9b7ba]'}`}></i>
+                    <i className={`fas fa-chevron-down text-sm flex-shrink-0 transition-transform duration-500 ${isExpanded ? 'rotate-180 text-[#efe5dc]' : 'text-[#86a3ab] group-hover:text-[#a9b7ba]'}`}></i>
                   </div>
 
                   <div className={`grid transition-all duration-500 ease-in-out ${isExpanded ? 'grid-rows-[1fr] opacity-100 mt-4' : 'grid-rows-[0fr] opacity-0 mt-0'}`}>

@@ -3,74 +3,42 @@ import { useState } from 'react';
 export const Experience = () => {
   const [activeTab, setActiveTab] = useState(0);
 
-  // === DATOS REDACTADOS CON ENFOQUE EN VALOR EMPRESARIAL Y TÉCNICO ===
+  // === DATOS DE EXPERIENCIA PROFESIONAL ALINEADOS AL CV ===
   const experiences = [
     {
       id: 0,
-      company: "Desarrollo Académico",
-      role: "Ingeniera en Sistemas en Formación",
-      date: "Ago 2022 – Presente",
-      focus: "Evolución práctica desde fundamentos algorítmicos hasta arquitecturas distribuidas.",
+      company: "IACSITEC",
+      role: "Desarrolladora Backend Java / Full Stack",
+      date: "Jul 2025 – Jul 2026",
+      focus: "Desarrollo de microservicios empresariales, persistencia con Spring Data JPA y seguridad JWT.",
       bullets: [
-        "Desde mis inicios en 2022, he forjado mi experiencia práctica asumiendo el liderazgo técnico y la arquitectura de proyectos de alta complejidad.",
-        "He orquestado soluciones innovadoras de software distribuido como 'NovaDocs' (clúster local para LLMs), aplicando estándares empresariales en un entorno académico.",
-        "Desarrollo entornos simulados como el laboratorio de hacking ético 'Vansus Hack' y el software de monitoreo 'Blue Tech Sentinel', afianzando mis conocimientos en ciberseguridad proactiva."
-      ],
-      icon: "fas fa-graduation-cap"
-    },
-    
-    {
-      id: 1,
-      company: "Servicio Social",
-      role: "Ingeniera de Infraestructura y Redes",
-      date: "Ene 2025 – Presente",
-      focus: "Despliegue, aseguramiento y optimización de servidores institucionales.",
-      bullets: [
-        "Contribuí al levantamiento y configuración de un Servidor RDS (Remote Desktop Services), centralizando el acceso a recursos académicos de forma segura y eficiente.",
-        "Optimicé la infraestructura de red aplicando políticas de seguridad y control de accesos para proteger la integridad de los datos institucionales frente a vulnerabilidades.",
-        "Desarrollé documentación técnica exhaustiva del ecosistema desplegado, garantizando su mantenibilidad a largo plazo y facilitando la curva de aprendizaje para futuros administradores."
+        "Desarrollo de APIs REST y microservicios con Java 17, Spring Boot 3 y Spring Web.",
+        "Integración de Spring Data JPA, Hibernate, PostgreSQL y Spring Security.",
+        "Implementación de autenticación JWT, pruebas con JUnit y documentación con Swagger.",
+        "Contenerización con Docker, gestión de dependencias con Maven y control de versiones con Git."
       ],
       icon: "fas fa-server"
     },
     {
+      id: 1,
+      company: "Dev Binary X",
+      role: "Becaria de Desarrollo Java / Full Stack",
+      date: "Sep 2023 – Jun 2025",
+      focus: "Desarrollo en Adobe Experience Manager (AEM), arquitectura OSGi y habilitación de plantillas.",
+      bullets: [
+        "Desarrollo de aplicaciones empresariales y APIs REST utilizando Java, Spring Boot y Node.js.",
+        "Desarrollo en Adobe Experience Manager (AEM): Creación de componentes utilizando Java, Sling Models y HTL (Sightly) para la habilitación de plantillas (templates) dinámicas y estáticas en AEM Sites.",
+        "Gestión y estructuración del repositorio JCR a través de CRXDE y el Configuration Browser, aplicando la arquitectura modular OSGi para la configuración segura de contenedores y nodos.",
+        "Integración de AEM Assets para la gestión de contenido multimedia y construcción de interfaces interactivas conectando el CMS con React, JavaScript, HTML5 y CSS3 (Tailwind).",
+        "Configuración de entornos locales y participación en el flujo de despliegue (pipelines) hacia los ambientes de AEM Author."
+      ],
+      icon: "fas fa-cubes"
+    },
+    {
       id: 2,
-      company: "IASCITEC",
-      role: "Desarrolladora Full-Stack",
-      date: "Abr 2025 – Presente",
-      focus: "Automatización y optimización de procesos operativos de negocio.",
-      bullets: [
-        "Desarrollo ecosistemas web a medida utilizando React, Python y PHP, enfocados en la reducción de carga operativa y la simplificación de tareas complejas para los clientes.",
-        "Diseño e implemento APIs RESTful seguras, permitiendo la interconexión ágil y eficiente entre múltiples plataformas y servicios de terceros.",
-        "Arquitecto y administro bases de datos relacionales y NoSQL, garantizando la integridad, seguridad y rápida disponibilidad de la información crítica para la toma de decisiones."
-      ],
-      icon: "fas fa-laptop-code"
-    },
-    
-    {
-      id: 3,
-      company: "Plataforma Vansus",
-      role: "Fundadora y Educadora Tecnológica",
-      date: "Ago 2025 – Presente",
-      focus: "Democratización del conocimiento técnico y consolidación de habilidades de comunicación.",
-      bullets: [
-        "Diseñé y desarrollé la plataforma web 'Vansus' como un espacio centralizado para documentar y compartir mi trayectoria y aprendizajes en la ingeniería de software.",
-        "Produzco material audiovisual donde explico la arquitectura y lógica detrás de mis proyectos, traduciendo conceptos de programación complejos a un lenguaje accesible.",
-        "Esta iniciativa me permite aportar valor a la comunidad estudiantil, a la vez que refuerza mi dominio técnico y demuestra mis habilidades de liderazgo y comunicación estratégica."
-      ],
-      icon: "fas fa-video",
-      // === DATOS DE LAS REDES SOCIALES ===
-      socialLinks: [
-        { name: "YouTube", icon: "fab fa-youtube", url: "https://youtube.com/@vansusacademy?si=pC9v5o-X0uMnS_py" },
-        { name: "TikTok", icon: "fab fa-tiktok", url: "https://www.tiktok.com/@vansus2112?_r=1&_t=ZS-96K6cPNIibl" },
-        { name: "Instagram", icon: "fab fa-instagram", url: "https://www.instagram.com/vansus2112?igsh=b21oZ3RkdDEycXYw" },
-        { name: "Facebook", icon: "fab fa-facebook-f", url: "https://www.facebook.com/share/1HALQgE5FP/" }
-      ]
-    },
-    {
-      id: 4,
       company: "Wise Agend",
       role: "Líder de Proyecto (Project Manager)",
-      date: "Sep 2025 – Ene 2026",
+      date: "Sep 2023 – Ene 2024",
       focus: "Gestión de talento y orquestación de arquitectura multiplataforma orientada a la productividad.",
       bullets: [
         "Lideré y coordiné un equipo multidisciplinario de 11 personas, asegurando el cumplimiento de hitos y la entrega de la solución tecnológica en tiempo y forma.",
@@ -80,10 +48,10 @@ export const Experience = () => {
       icon: "fas fa-users-cog"
     },
     {
-      id: 5,
+      id: 3,
       company: "8vo Coloquio de Sistemas",
-      role: "Expositora y Desarrolladora de IA",
-      date: "Mayo 2026",
+      role: "Expositora y Desarrolladora de IA (Axoscan)",
+      date: "Mayo 2024",
       focus: "Innovación en sustentabilidad mediante Inteligencia Artificial y sistemas de gamificación.",
       bullets: [
         "Participé como ponente destacada presentando 'Axoscan', una solución tecnológica orientada a la concientización ecológica y evaluación de impacto ambiental.",
@@ -92,7 +60,6 @@ export const Experience = () => {
       ],
       icon: "fas fa-leaf"
     }
-
   ];
 
   return (

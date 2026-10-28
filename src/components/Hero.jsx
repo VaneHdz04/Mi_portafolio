@@ -96,7 +96,12 @@ const ParticlesNetwork = () => {
 
 // === COMPONENTE PRINCIPAL HERO ===
 export const Hero = () => {
-  const words = ["Ingeniera de Software", "Dev Full-Stack", "Especialista en IA", "Desarrolladora Móvil", "Desarrolladora Web"];
+  const words = [
+    "Desarrolladora Backend Java",
+    "Desarrolladora Full Stack",
+    "Java & Spring Boot",
+    "Adobe Experience Manager (AEM)"
+  ];
   const typewrittenText = useTypewriter(words);
 
   return (
@@ -119,22 +124,22 @@ export const Hero = () => {
         <div className="w-full lg:w-[55%] flex flex-col justify-center z-20 relative pr-0 lg:pr-10">
           
           <h2 className="text-[#a9b7ba] text-xs md:text-sm font-bold tracking-widest uppercase mb-5 max-w-lg leading-relaxed">
-            Para mí, el desarrollo es el arte de tomar el caos del mundo real y convertirlo en <span className="text-[#eeede8]">sistemas lógicos e intuitivos.</span>
+            Arquitectura Backend, APIs REST & Soluciones Empresariales <span className="text-[#eeede8]">Escalables</span>
           </h2>
 
-          {/* SOLUCIÓN: Cambiamos a 'min-h' y aumentamos los valores para que el texto grande quepa perfectamente sin desbordarse ni mover la pantalla */}
-          <div className="min-h-[180px] sm:min-h-[220px] md:min-h-[260px] lg:min-h-[300px] mb-2 flex flex-col justify-center">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight text-[#eeede8]">
+          {/* Espacio predefinido y anclado al inicio para evitar saltos o 'golpes' al alternar entre 2 y 3 líneas */}
+          <div className="h-[200px] sm:h-[210px] md:h-[230px] lg:h-[250px] mb-4 flex flex-col justify-start">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.18] text-[#eeede8]">
               Hola, soy <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#86a3ab] to-[#efe5dc]">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#86a3ab] to-[#efe5dc] inline-block">
                 {typewrittenText}
               </span>
-              <span className="text-[#86a3ab] animate-pulse">|</span>
+              <span className="text-[#86a3ab] animate-pulse ml-1">|</span>
             </h1>
           </div>
 
-          <p className="text-[#cbcac8] leading-relaxed max-w-lg text-lg mb-10 font-medium border-l-4 border-[#86a3ab] pl-5">
-            Desarrolladora Full-Stack enfocada en la automatización de procesos y arquitecturas modernas. Combino Inteligencia Artificial, pensamiento analítico y desarrollo multiplataforma para crear soluciones que redefinen la eficiencia.
+          <p className="text-[#cbcac8] leading-relaxed max-w-xl text-sm md:text-base mb-10 font-normal border-l-4 border-[#86a3ab] pl-5">
+            Desarrolladora Backend Java y Full Stack enfocada en la construcción de aplicaciones empresariales, APIs REST y soluciones de gestión de contenido digital. Trabajo con Java, Spring Boot y Adobe Experience Manager (AEM), aplicando arquitecturas modulares, buenas prácticas de desarrollo e integración de tecnologías frontend para crear soluciones escalables y mantenibles.
           </p>
           
           {/* BOTÓN CON EFECTO SWEEP */}

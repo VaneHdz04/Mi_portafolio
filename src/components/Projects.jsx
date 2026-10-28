@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
+import AdobeLogo from '../assets/adobe.svg';
 
 // === COMPONENTE 1: LIGHTBOX (Galería a pantalla completa) ===
 const Lightbox = ({ project, onClose }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Prevenir el scroll de la página de fondo
   useEffect(() => {
     document.body.style.overflow = 'hidden';
     return () => {
@@ -23,21 +23,15 @@ const Lightbox = ({ project, onClose }) => {
   };
 
   return (
-    // Z-index 9999 asegura que tape el Navbar
     <div className="fixed inset-0 z-[9999] flex flex-col items-center justify-center p-6 md:p-12">
-      
-      {/* Fondo difuminado general */}
       <div className="absolute inset-0 bg-[#121619]/95 backdrop-blur-2xl" onClick={onClose}></div>
       
-      {/* Botón de cerrar */}
       <button onClick={onClose} className="absolute top-6 right-6 md:top-8 md:right-8 z-50 w-12 h-12 rounded-full bg-[#86a3ab]/20 border border-[#86a3ab]/50 text-[#efe5dc] hover:bg-[#86a3ab] hover:scale-110 transition-all flex items-center justify-center shadow-lg">
         <i className="fa-solid fa-xmark text-xl"></i>
       </button>
 
-      {/* Contenedor Principal de la Imagen */}
       <div className="relative w-full max-w-5xl h-[45vh] md:h-[55vh] flex items-center justify-center z-10 mb-6 mt-4">
-        
-        {project.images.length > 1 && (
+        {project.images && project.images.length > 1 && (
           <>
             <button onClick={prevImage} className="absolute left-0 md:-left-12 z-20 w-12 h-12 rounded-full bg-[#1f272c] border border-[#86a3ab]/50 text-[#86a3ab] hover:text-[#efe5dc] hover:bg-[#86a3ab]/80 hover:scale-110 transition-all flex items-center justify-center shadow-xl">
               <i className="fa-solid fa-chevron-left"></i>
@@ -48,15 +42,16 @@ const Lightbox = ({ project, onClose }) => {
           </>
         )}
 
-        <img 
-          src={project.images[currentIndex]} 
-          alt={`${project.title} - imagen ${currentIndex + 1}`}
-          className="max-w-full max-h-full object-contain drop-shadow-[0_0_40px_rgba(134,163,171,0.2)] anim-fade-in"
-          key={currentIndex} 
-        />
+        {project.images && project.images.length > 0 && (
+          <img 
+            src={project.images[currentIndex]} 
+            alt={`${project.title} - imagen ${currentIndex + 1}`}
+            className="max-w-full max-h-full object-contain drop-shadow-[0_0_40px_rgba(134,163,171,0.2)] anim-fade-in"
+            key={currentIndex} 
+          />
+        )}
       </div>
 
-      {/* Detalles del Lightbox */}
       <div className="relative z-10 w-full max-w-4xl text-center flex flex-col items-center">
         <h3 className="text-3xl md:text-4xl font-extrabold text-[#eeede8] mb-4 drop-shadow-md">
           {project.title}
@@ -66,17 +61,19 @@ const Lightbox = ({ project, onClose }) => {
           {project.description}
         </p>
 
-        <div className="flex justify-center gap-3 overflow-x-auto py-2 hide-scrollbar w-full max-w-xl">
-          {project.images.map((img, idx) => (
-            <button 
-              key={idx} 
-              onClick={(e) => { e.stopPropagation(); setCurrentIndex(idx); }}
-              className={`relative h-14 w-20 flex-shrink-0 rounded-lg overflow-hidden border-2 transition-all duration-300 ${idx === currentIndex ? 'border-[#86a3ab] scale-110 shadow-[0_0_15px_rgba(134,163,171,0.5)]' : 'border-transparent opacity-50 hover:opacity-100'}`}
-            >
-              <img src={img} alt="thumbnail" className="w-full h-full object-cover" />
-            </button>
-          ))}
-        </div>
+        {project.images && project.images.length > 1 && (
+          <div className="flex justify-center gap-3 overflow-x-auto py-2 hide-scrollbar w-full max-w-xl">
+            {project.images.map((img, idx) => (
+              <button 
+                key={idx} 
+                onClick={(e) => { e.stopPropagation(); setCurrentIndex(idx); }}
+                className={`relative h-14 w-20 flex-shrink-0 rounded-lg overflow-hidden border-2 transition-all duration-300 ${idx === currentIndex ? 'border-[#86a3ab] scale-110 shadow-[0_0_15px_rgba(134,163,171,0.5)]' : 'border-transparent opacity-50 hover:opacity-100'}`}
+              >
+                <img src={img} alt="thumbnail" className="w-full h-full object-cover" />
+              </button>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
@@ -86,7 +83,6 @@ const Lightbox = ({ project, onClose }) => {
 const ProjectCard = ({ project, index, openLightbox }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  // Auto-carrusel suave (Crossfade)
   useEffect(() => {
     if (!project.images || project.images.length <= 1) return;
     const intervalTime = 3000 + (index * 600); 
@@ -96,15 +92,16 @@ const ProjectCard = ({ project, index, openLightbox }) => {
     return () => clearInterval(timer);
   }, [project.images, index]);
 
+  const hasImages = project.images && project.images.length > 0;
+
   return (
     <div 
-      onClick={() => openLightbox(project)}
+      onClick={() => hasImages && openLightbox(project)}
       className="group cursor-pointer flex flex-col bg-[#1f272c]/40 backdrop-blur-xl border border-[#86a3ab]/30 rounded-[2rem] p-4 hover:border-[#86a3ab] hover:bg-[#1f272c]/70 transition-all duration-500 shadow-lg hover:shadow-[0_20px_40px_rgba(134,163,171,0.2)] anim-fade-in"
     >
-      {/* Contenedor de la Imagen: Nunca se tapa */}
+      {/* Contenedor Superior (Imagen o Banner Visual AEM) */}
       <div className="relative w-full h-56 rounded-xl overflow-hidden bg-gradient-to-br from-[#121619] to-[#86a3ab]/20 border border-[#86a3ab]/10 flex items-center justify-center shadow-inner shrink-0">
-        
-        {project.images && project.images.length > 0 ? (
+        {hasImages ? (
           project.images.map((img, idx) => (
             <img 
               key={idx}
@@ -116,19 +113,27 @@ const ProjectCard = ({ project, index, openLightbox }) => {
             />
           ))
         ) : (
-          <div className="text-[#86a3ab]/50 font-mono text-sm">Sin imágenes</div>
+          /* Visual para proyectos sin capturas (AEM) */
+          <div className="flex flex-col items-center justify-center gap-3 p-6 text-center select-none">
+            <div className="w-16 h-16 rounded-2xl bg-[#121619]/90 border border-[#86a3ab]/30 flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:border-[#efe5dc]/50 transition-all duration-300">
+              <img src={AdobeLogo} alt="Adobe" className="w-9 h-9 object-contain" />
+            </div>
+            <div className="flex flex-col items-center">
+              <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#efe5dc]">Adobe Experience Manager</span>
+              <span className="text-[10px] text-[#86a3ab] font-medium">Enterprise CMS</span>
+            </div>
+          </div>
         )}
 
-        {/* Indicador de Expandir en la esquina */}
-        <div className="absolute top-3 right-3 w-8 h-8 rounded-full bg-[#121619]/60 backdrop-blur-md flex items-center justify-center text-[#86a3ab] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <i className="fa-solid fa-expand text-xs"></i>
-        </div>
+        {hasImages && (
+          <div className="absolute top-3 right-3 w-8 h-8 rounded-full bg-[#121619]/60 backdrop-blur-md flex items-center justify-center text-[#86a3ab] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <i className="fa-solid fa-expand text-xs"></i>
+          </div>
+        )}
       </div>
 
       {/* Contenedor de Textos */}
       <div className="pt-5 px-2 flex flex-col flex-grow">
-        
-        {/* Cabecera (Siempre visible) */}
         <div>
           <h3 className="text-xl font-extrabold text-[#eeede8] mb-1 group-hover:text-[#efe5dc] transition-colors">
             {project.title}
@@ -138,11 +143,9 @@ const ProjectCard = ({ project, index, openLightbox }) => {
           </p>
         </div>
 
-        {/* === EFECTO ACORDEÓN MAGICO === */}
-        {/* Este grid-rows se expande de 0fr a 1fr revelando el contenido suavemente sin encimar */}
+        {/* Efecto Acordeón al hacer Hover */}
         <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-in-out">
           <div className="overflow-hidden">
-            
             <div className="pt-4 flex flex-col gap-5">
               <p className="text-[#cbcac8] font-light text-[13px] leading-relaxed">
                 {project.description}
@@ -150,7 +153,7 @@ const ProjectCard = ({ project, index, openLightbox }) => {
               
               <div>
                 <h4 className="text-[#86a3ab] text-[9px] font-bold uppercase tracking-widest mb-3 border-t border-[#86a3ab]/20 pt-3">
-                  Stack Tecnológico Integrado:
+                  Herramientas Usadas:
                 </h4>
                 <div className="flex flex-wrap gap-2">
                   {project.tags.map((tag, i) => (
@@ -164,9 +167,7 @@ const ProjectCard = ({ project, index, openLightbox }) => {
                   ))}
                 </div>
               </div>
-
             </div>
-
           </div>
         </div>
 
@@ -184,8 +185,31 @@ export const Projects = () => {
     return Array.from({ length: count }, (_, i) => `/projects/${folder}/${i + 1}.${ext}`);
   };
 
-  // === PROYECTOS (Redacción de Alto Impacto Técnico) ===
   const projects = [
+    // === PROYECTOS AEM AL INICIO DE LA LISTA ===
+    {
+      id: "aem-1",
+      title: "Transformación a Portal Híbrido",
+      category: "AEM",
+      description: "Modernización de un portal corporativo masivo de alto tráfico mediante un modelo CMS Headless/Híbrido. Gobernanza en /conf con Configuration Browser, creación de Editable Templates en AEM Sites para el equipo de marketing, y conexión con React vía SPA Editor y Sling Models (.model.json).",
+      tags: ["AEM Sites", "React", "SPA Editor", "Sling Models", "HTL", "JCR /conf", "Configuration Browser"],
+    },
+    {
+      id: "aem-2",
+      title: "Portal B2B de Manufactura y Distribuidores",
+      category: "AEM",
+      description: "Portal empresarial para búsqueda de piezas en miles de manuales PDF. Migración de contenido a AEM Assets (DAM), optimización de búsqueda mediante pre-extracción de texto e indexación en Apache Jackrabbit Oak, eliminación de traversal con SlingQuery y seguridad estricta con ACLs en JCR.",
+      tags: ["AEM Assets (DAM)", "Apache Jackrabbit Oak", "SlingQuery", "JCR ACLs", "Java"],
+    },
+    {
+      id: "aem-3",
+      title: "Plataforma de Promoción de Entretenimiento",
+      category: "AEM",
+      description: "Ecosistema de Landing Pages para campañas de marketing. Estandarización y patrón de herencia sobre Core Components de Adobe (Teasers, carruseles) inyectados con HTL (Sightly), modularización de ClientLibs por categorías y seguridad visual con allowProxy=true protegiendo la ruta /apps.",
+      tags: ["AEM Core Components", "HTL (Sightly)", "ClientLibs", "allowProxy=true", "AEM Sites"],
+    },
+
+    // === RESTO DE PROYECTOS GENERALES CON EVIDENCIA ===
     {
       id: 1,
       title: "Axoscan",
@@ -348,7 +372,8 @@ export const Projects = () => {
     }
   ];
 
-  const filters = ["Todos", "Mobile & IA", "IA & Data Science", "Cloud & DevOps", "Ciberseguridad", "Full-Stack Web", "Hardware & IoT", "Redes & Sistemas"];
+  // Filtros con AEM incluido
+  const filters = ["Todos", "AEM", "Mobile & IA", "IA & Data Science", "Cloud & DevOps", "Ciberseguridad", "Full-Stack Web", "Hardware & IoT", "Redes & Sistemas"];
 
   const filteredProjects = activeFilter === "Todos" 
     ? projects 
@@ -357,6 +382,7 @@ export const Projects = () => {
   return (
     <section id="proyectos" className="relative max-w-[1400px] mx-auto px-6 py-32 z-10">
       
+      {/* Encabezado */}
       <div className="text-center mb-16 anim-up">
         <h2 className="text-[#86a3ab] text-sm font-bold tracking-widest uppercase mb-3">Portfolio de Ingeniería</h2>
         <h3 className="text-4xl md:text-5xl font-extrabold text-[#eeede8] tracking-tight">Proyectos Destacados</h3>
@@ -389,9 +415,8 @@ export const Projects = () => {
           </ul>
         </div>
 
-        {/* COLUMNA DERECHA: GRID */}
+        {/* COLUMNA DERECHA: GRID DE PROYECTOS */}
         <div className="w-full lg:w-3/4 z-10">
-          {/* Aplicamos alignItems a flex-start para que el acordeón empuje cada carta sin desconfigurar la cuadrícula */}
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8 items-start">
             {filteredProjects.map((project, index) => (
               <ProjectCard 
