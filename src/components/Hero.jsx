@@ -138,25 +138,9 @@ export const Hero = () => {
             </h1>
           </div>
 
-          <p className="text-[#cbcac8] leading-relaxed max-w-xl text-sm md:text-base mb-10 font-normal border-l-4 border-[#86a3ab] pl-5">
+          <p className="text-[#cbcac8] leading-relaxed max-w-xl text-sm md:text-base font-normal border-l-4 border-[#86a3ab] pl-5">
             Desarrolladora Backend Java y Full Stack enfocada en la construcción de aplicaciones empresariales, APIs REST y soluciones de gestión de contenido digital. Trabajo con Java, Spring Boot y Adobe Experience Manager (AEM), aplicando arquitecturas modulares, buenas prácticas de desarrollo e integración de tecnologías frontend para crear soluciones escalables y mantenibles.
           </p>
-          
-          {/* BOTÓN CON EFECTO SWEEP */}
-          <div className="flex items-center gap-6">
-            <a 
-              href="https://drive.google.com/uc?export=download&id=11GnGdTG7yJkL05W-xVSVa68EDY12vmR9"  
-
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="btn-sweep group relative flex items-center gap-4 px-10 py-5 font-bold text-[#1f272c] bg-gradient-to-r from-[#a9b7ba] to-[#eeede8] transition-all hover:scale-105 active:scale-95 shadow-[0_15px_30px_rgba(134,163,171,0.3)] border border-[#eeede8]"
-              style={{ borderRadius: '2.5rem 10px 2.5rem 10px' }} 
-            >
-              <i className="fas fa-file-pdf text-2xl group-hover:-rotate-12 transition-transform duration-300"></i>
-              <span className="tracking-wider uppercase text-sm font-extrabold z-20">Descargar CV</span>
-              <i className="fas fa-arrow-right opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 z-20"></i>
-            </a>
-          </div>
         </div>
 
         {/* --- SECCIÓN DERECHA: TARJETAS DE CRISTAL 3D --- */}
